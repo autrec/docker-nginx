@@ -6,12 +6,9 @@ RUN apk upgrade
 #设置时区
 RUN apk add --no-cache tzdata
 ENV TZ Asia/Shanghai
-# 创建app目录
-RUN mkdir -p /usr/local/src/nginx
-#进入工作目录
-WORKDIR /usr/local/src/nginx
-#安装lnmp nginx
-RUN wget http://soft.vpser.net/lnmp/lnmp1.6.tar.gz -cO lnmp1.6.tar.gz && tar zxf lnmp1.6.tar.gz && cd lnmp1.6 && ./install.sh nginx
+#安装nginx
+RUN apk --update add nginx
 #开放端口
 EXPOSE 80
 EXPOSE 443
+CMD ["nginx","-g","daemon off;"]
