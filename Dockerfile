@@ -1,6 +1,6 @@
 FROM alpine
 #声明作者
-LABEL maintainer="mo@autre.cn"
+LABEL maintainer="NGINX Docker Autre <mo@autre.cn>"
 RUN apk update
 RUN apk upgrade
 #设置时区
