@@ -1,6 +1,8 @@
 FROM alpine
 #声明作者
 LABEL maintainer="nginx docker Autre <mo@autre.cn>"
+#创建www用户和组，在nginx.conf中用到
+RUN adduser -g 50000 -u 50000 -s /sbin/nologin -D -H www
 #升级内核及软件
 RUN apk update \
     && apk upgrade \
