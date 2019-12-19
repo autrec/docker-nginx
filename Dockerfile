@@ -14,10 +14,11 @@ RUN apk update \
     && rm -rf /tmp/* /var/cache/apk/*
 ##安装nginx
 RUN apk --update add --no-cache nginx \
-    && rm -rf /tmp/* /var/cache/apk/* \
+    && rm -rf /tmp/* /var/cache/apk/*
     ## 创建网站和日志目录
-    && mkdir -p /var/wwwroot /var/wwwlogs
-
+    ##&& mkdir -p /var/wwwroot /var/wwwlogs
+##挂载目录
+VOLUME ["/etc/nginx","/var/wwwroot","/var/wwwlogs"]
 ##conf目录： /etc/nginx
 ##进入命令目录 （不然会出现nginx: [emerg] open() "/var/run/nginx/nginx.pid" failed）
 WORKDIR /run/nginx
