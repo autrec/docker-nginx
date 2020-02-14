@@ -8,14 +8,15 @@ RUN set -x \
     && apk update \
     && apk upgrade \
     ##设置时区
-    && apk --update add --no-cache tzdata \
+    #&& apk --update add --no-cache tzdata \
+    && apk add tzdata \
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
-    && apk del tzdata \
+    && apk del tzdata
     ## 清除安装软件及缓存
-    && rm -rf /tmp/* /var/cache/apk/*
+    ##&& rm -rf /tmp/* /var/cache/apk/*
 ##安装nginx
 RUN set -x \
-    && apk --update add --no-cache nginx \
+    && apk add nginx \
     && rm -rf /tmp/* /var/cache/apk/*
     ## 创建网站和日志目录
     ##&& mkdir -p /var/wwwroot /var/wwwlogs
