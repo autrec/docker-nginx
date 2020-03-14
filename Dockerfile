@@ -6,16 +6,11 @@ RUN set -x \
     && apk update \
     && apk upgrade \
     ##设置时区
-    #&& apk --update add --no-cache tzdata \
     && apk add tzdata \
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && apk del tzdata
     ## 清除安装软件及缓存
     ##&& rm -rf /tmp/* /var/cache/apk/*
-#创建www用户和组，在nginx.conf中用到
-RUN set -x \
-    && addgroup -g 9999 -S www \
-    && adduser -S -D -u 9999 -s /sbin/nologin -G www -g www www
 ##安装nginx
 RUN set -x \
     && apk add nginx \
