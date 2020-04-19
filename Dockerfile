@@ -13,6 +13,8 @@ RUN set -x \
     ##&& rm -rf /tmp/* /var/cache/apk/*
 ##安装nginx
 RUN set -x \
+    && addgroup -g 111 -S www \
+    && adduser -S -D -u 111 -s /sbin/nologin -G www -g www www \
     && apk add nginx \
     && rm -rf /tmp/* /var/cache/apk/*
 ##挂载目录
