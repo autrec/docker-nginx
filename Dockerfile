@@ -14,7 +14,9 @@ RUN set -x \
 ##安装nginx
 RUN set -x \
     && addgroup -g 111 -S www \
-    && adduser -S -D -u 111 -h /var/cache/nginx -s /sbin/nologin -G www -g www www \
+    && adduser -S -D -u 111 -s /sbin/nologin -G www -g www www \
+    && mkdir -p /var/lib/nginx/tmp/client_body /var/lib/nginx/tmp/fastcgi /var/lib/nginx/tmp/proxy /var/lib/nginx/tmp/scgi /var/lib/nginx/tmp/uwsgi \
+    && chown -R www:www /var/lib/nginx/tmp \
     && apk add nginx \
     && rm -rf /tmp/* /var/cache/apk/*
 ##挂载目录

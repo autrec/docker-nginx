@@ -13,3 +13,6 @@ docker build -t autres/nginx .
 ## 多系统构架
 
 docker buildx build -t autres/nginx --platform=linux/amd64,linux/arm64,linux/ppc64le,linux/s390x,linux/386,linux/arm/v7,linux/arm/v6 . --push
+
+
+docker run -itd --name=nginxt -p 80:80 -p 443:443 --network=docker_net_aliyun --network-alias=nginxt --restart=always -v "$(pwd)/wwwroot":/var/wwwroot -v "$(pwd)/wwwlogs":/var/wwwlogs -v "$(pwd)/conf":/etc/nginx nginxt
