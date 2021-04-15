@@ -1,6 +1,6 @@
 FROM alpine
 #声明作者
-LABEL maintainer="a little <mo@autre.cn>"
+LABEL maintainer="a little <little@autre.cn> https://coding.autre.cn"
 #升级内核及软件
 RUN set -x \
     && apk update \
@@ -16,8 +16,8 @@ RUN set -x \
     && addgroup -g 111 -S www \
     && adduser -S -D -u 111 -s /sbin/nologin -G www -g www www \
     && mkdir -p /var/lib/nginx/tmp/client_body /var/lib/nginx/tmp/fastcgi /var/lib/nginx/tmp/proxy /var/lib/nginx/tmp/scgi /var/lib/nginx/tmp/uwsgi \
-    && chown -R www:www /var/lib/nginx/tmp \
     && apk add nginx \
+    && chown -R www:www /var/lib/nginx/tmp \
     && rm -rf /tmp/* /var/cache/apk/*
 ##挂载目录
 VOLUME ["/etc/nginx","/var/wwwroot","/var/wwwlogs"]
